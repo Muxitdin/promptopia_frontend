@@ -1,0 +1,119 @@
+.wrapper {
+    width: 50%;
+    margin: 0 auto;
+    z-index: 15;
+}
+
+.header1 {
+    margin-top: 1rem;
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.5;
+    background-image: linear-gradient(to right, #2563eb , #0891b2 );
+    /* Define gradient colors */
+    -webkit-background-clip: text;
+    /* Clip the background to the text */
+    background-clip: text;
+    color: transparent;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    z-index: 10;
+}
+
+.header2 {
+    margin-top: 1.25rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    --tw-text-opacity: 1;
+    color: rgb(75 85 99);
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+}
+
+form {
+    border: 1px solid #E2E8F0;
+    min-width: 100%;
+    border-radius: 15px;
+    padding: 1rem;
+    margin-top: 1rem;
+    font-family: Satoshi, sans-serif;
+    background-color: #ffffffc2;
+    background-clip: padding-box;
+    z-index: 16;
+    -moz-column-break-inside: avoid;
+}
+
+.form {
+    z-index: 15;
+}
+
+.p1,.p2 {
+    font-family: Satoshi, sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: #374151;
+}
+
+.p2 span {
+    font-weight: 400;
+}
+
+form textarea {
+    display: flex;
+    max-width: 100%;
+    min-width: 100%;
+    height: 80px;
+    border-radius: .5rem;
+    padding: .75rem;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    --tw-text-opacity: 1;
+    color: rgb(107 114 128 / var(--tw-text-opacity));
+    outline-width: 0;
+    box-sizing: border-box;
+    font-family: Satoshi, sans-serif;
+    border: 1px solid #E2E8F0;
+}
+
+.btn_wrapper {
+    align-self: end;
+    display: flex;
+    gap: 1rem;
+}
+
+.createbtn {
+    background-image: linear-gradient(-180deg, #FF7E31, #E62C03);
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Inter, -apple-system, system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
+    height: 40px;
+    line-height: 40px;
+    outline: 0;
+    overflow: hidden;
+    padding: 0 20px;
+    pointer-events: auto;
+    position: relative;
+    text-align: center;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: top;
+    white-space: nowrap;
+    width: 100%;
+    z-index: 9;
+    border: 0;
+    transition: box-shadow .2s;
+}
+
+.createbtn:hover {
+    box-shadow: rgba(253, 76, 0, 0.5) 0 3px 8px;
+}
+
+.cancelbtn {
+    color: #111827;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;;
+}
