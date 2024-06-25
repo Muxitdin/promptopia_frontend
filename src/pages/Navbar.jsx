@@ -3,13 +3,16 @@ import s from "./styles/Navbar.module.css"
 import logo from "../assets/images/logo.svg"
 import { useDispatch, useSelector } from 'react-redux'
 import { authLogout } from '../redux/slice/authSlice.js'
+import { NavLink, useNavigate } from "react-router-dom";
 
 function Navbar() {
     const dispatch = useDispatch()
+    const navigate = useNavigate();
     const { isLoggedIn, auth } = useSelector(state => state.auth)
 
     const handleLogOut = () => {
         dispatch(authLogout())
+        navigate("/")
         document.location.reload();
     }
     
@@ -17,20 +20,20 @@ function Navbar() {
         <div className={s.wrapper}>
             <header>
                 <div className={s.logo}>
-                    <a href="/">
+                    <NavLink to="/">
                         <img src={logo} alt="logo" />
                         <span>Promptopia</span>
-                    </a>
+                    </NavLink>
                 </div>
                 <div className={s.btns}>
                     {isLoggedIn ? (
                         <>
-                            <a href="/create-prompt"><button className={s.button} role="button">Create Prompt</button></a>
+                            <NavLink to="/create-prompt"><button className={s.button} role="button">Create Prompt</button></NavLink>
                             <a><button onClick={handleLogOut} className={s.logout} role="button">Sign Out</button></a>
-                            <a href="/profile"><img className={s.user_icon} src={auth.image} alt="profile" /></a>
+                            <NavLink to="/profile"><img className={s.user_icon} src={auth.image} alt="profile" /></NavLink>
                         </>
                     ) : (
-                        <a href="/signin"><button className={s.button} role="button">SignIn</button></a>
+                        <NavLink to="/signin"><button className={s.button} role="button">SignIn</button></NavLink>
                     )}
 
                 </div>
