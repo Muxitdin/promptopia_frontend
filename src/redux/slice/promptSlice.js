@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { Toast } from "../../config/sweetAlert";
 // import Service from "../../config/service.js";
 
 const initialState = {
@@ -29,7 +30,7 @@ const PromptSlice = createSlice({
         promptFailure: (state, action) => {
             state.isLoading = false;
             state.isError = action.payload;
-        },
+        }
     },
 });
 
@@ -51,6 +52,10 @@ export const updatePrompt = (id, obj) => async dispatch => {
     dispatch(promptStart())
     try {
         const { data } = await axios.put(`http://localhost:5000/api/prompts/update/${id}`, obj)
+        Toast.fire({
+            icon: "success",
+            title: `${data.message}`
+        })
         return data
     } catch (error) {
         dispatch(promptFailure(error.message));

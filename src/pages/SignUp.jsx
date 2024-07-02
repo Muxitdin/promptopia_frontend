@@ -37,6 +37,18 @@ function SignUp() {
         // console.log(newUserData)
     }
 
+    const uploadImage = async (e) => {
+        const formData = new FormData();
+        const file = e.target.files[0];
+        formData.append("image", file);
+        const { data } = await axios.post("http://localhost:5000/api/upload-image", formData);
+        console.log(data)
+        setNewUserData({
+            ...newUserData,
+            image: data?.imgUrl
+        })
+    }
+
     return (
         <div className={s.wrapper}>
             <form className='backdrop-blur-sm bg-white/30 border-gray-400' onSubmit={handleCreateNewUser}>
@@ -44,7 +56,9 @@ function SignUp() {
                 <input onChange={handleInputChange} name='fullName' type="fullName" placeholder='User Name' />
                 <input onChange={handleInputChange} name='email' type="email" placeholder='E-mail' />
                 <input onChange={handleInputChange} name='password' type="password" placeholder='Password' />
-                <input onChange={handleInputChange} name='image' type="text" placeholder="image URL" />
+                <form action="/profile" method="post" enctype="multipart/form-data">
+                    <input onChange={uploadImage} type="file" name="image" id='image'/>
+                </form>
                 <button type='submit' className={s.button}>Sign Up</button>
             </form>
             <p>already has an account? <a href="/signin">Sign In</a></p>

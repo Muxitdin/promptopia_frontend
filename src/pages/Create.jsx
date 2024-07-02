@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import axios from 'axios'
 import s from "./styles/Create.module.css"
+import { Toast } from '../config/sweetAlert.js'
 
 
 function Create() {
@@ -24,11 +25,16 @@ function Create() {
     const handleCreateNewPrompt = async (e) => {
         e.preventDefault()
         try {
-            const { data } = await axios.post("http://localhost:5000/api/prompts", newPrompt)
-            // console.log(data)
+            const {data} = await axios.post("http://localhost:5000/api/prompts", newPrompt)
+            console.log(data)
+            Toast.fire({
+                icon: 'success',
+                title: `${data?.message}`
+            })
             navigate("/")
         } catch (error) {
             console.log(error)
+            console.log(error.response.data)
         }
     }
 

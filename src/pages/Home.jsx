@@ -4,6 +4,8 @@ import { fetchAllPromts, deletePrompt } from '../redux/slice/promptSlice.js';
 import s from "./styles/Home.module.css"
 import { useState } from 'react';
 import { getFromLocalStorage, removeFromLocalStorage, saveToLocalStorage } from '../config/localstorage.js';
+import { Toast } from '../config/sweetAlert.js';
+import axios from "axios";
 
 function Home() {
     const dispatch = useDispatch();
