@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { getFromLocalStorage, removeFromLocalStorage, saveToLocalStorage } from '../config/localstorage.js';
 import { Toast } from '../config/sweetAlert.js';
 import axios from "axios";
+import { NavLink } from 'react-router-dom';
 
 function Home() {
     const dispatch = useDispatch();
@@ -111,9 +112,9 @@ export function Feed({ search }) {
 
                             {id === prompt.author?._id && (
                                 <div className="mt-5 flex flex-center gap-4 border-t border-gray-200 pt-3">
-                                    <a href="/update-prompt" onClick={() => handleEdit(prompt)}> 
+                                    <NavLink to="/update-prompt" onClick={() => handleEdit(prompt)}> 
                                         <p className="font-inter text-sm green_gradient cursor-pointer" id={s.edit}>Edit</p>
-                                    </a>
+                                    </NavLink>
                                     <p onClick={() => handleDelete(prompt?._id)} className="font-inter text-sm orange_gradient cursor-pointer" id={s.delete}>Delete</p>
                                 </div>
                             )}

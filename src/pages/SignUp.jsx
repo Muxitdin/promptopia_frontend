@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { React, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { saveToLocalStorage } from '../config/localstorage.js'
 import s from "./styles/SignUp.module.css"
 
@@ -61,7 +61,7 @@ function SignUp() {
                 </form>
                 <button type='submit' className={s.button}>Sign Up</button>
             </form>
-            <p>already has an account? <a href="/signin">Sign In</a></p>
+            <p>already has an account? <NavLink to="/signin">Sign In</NavLink></p>
         </div>
     )
 }

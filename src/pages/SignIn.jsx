@@ -1,5 +1,5 @@
 import { React, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { saveToLocalStorage } from '../config/localstorage.js'
 import axios from 'axios'
 import s from "./styles/SignIn.module.css"
@@ -42,7 +42,7 @@ function SignIn() {
                 <input onChange={handleInputChange} name='password' type="password" placeholder='Password' />
                 <button type='submit' className={s.button}>Sign In</button>
             </form>
-            <p>hasn't got an account yet? <a href="/signup">Sign Up</a></p>
+            <p>hasn't got an account yet? <NavLink to="/signup">Sign Up</NavLink></p>
         </div>
     )
 }
