@@ -40,7 +40,7 @@ export default PromptSlice.reducer;
 export const fetchAllPromts = () => async dispatch => {
     dispatch(promptStart());
     try {
-        const { data } = await axios.get('http://localhost:5000/api/prompts');
+        const { data } = await axios.get('https://promptopia-back.onrender.com/api/prompts');
         // console.log(data)
         dispatch(promptSuccess({type: "b", data}));
     } catch (error) {
@@ -51,7 +51,7 @@ export const fetchAllPromts = () => async dispatch => {
 export const updatePrompt = (id, obj) => async dispatch => {
     dispatch(promptStart())
     try {
-        const { data } = await axios.put(`http://localhost:5000/api/prompts/update/${id}`, obj)
+        const { data } = await axios.put(`https://promptopia-back.onrender.com/api/prompts/update/${id}`, obj)
         Toast.fire({
             icon: "success",
             title: `${data.message}`
@@ -65,7 +65,7 @@ export const updatePrompt = (id, obj) => async dispatch => {
 export const deletePrompt = (id) => async dispatch => {
     dispatch(promptStart())
     try {
-        const { data } = await axios.delete(`http://localhost:5000/api/prompts/delete/${id}`)
+        const { data } = await axios.delete(`https://promptopia-back.onrender.com/api/prompts/delete/${id}`)
         return data
     } catch (error) {
         dispatch(promptFailure(error.message));

@@ -16,7 +16,7 @@ function SignIn() {
         e.preventDefault()
         // console.log(existedUserData)
         try {
-            const { data } = await axios.post("http://localhost:5000/api/auth/login", existedUserData)
+            const { data } = await axios.post("https://promptopia-back.onrender.com/api/auth/login", existedUserData)
             // console.log(data);
             saveToLocalStorage("token", data.token);
             navigate("/")

@@ -25,7 +25,7 @@ function Create() {
     const handleCreateNewPrompt = async (e) => {
         e.preventDefault()
         try {
-            const {data} = await axios.post("http://localhost:5000/api/prompts", newPrompt)
+            const {data} = await axios.post("https://promptopia-back.onrender.com/api/prompts", newPrompt)
             console.log(data)
             Toast.fire({
                 icon: 'success',

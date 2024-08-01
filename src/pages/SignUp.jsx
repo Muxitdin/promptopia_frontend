@@ -19,7 +19,7 @@ function SignUp() {
         e.preventDefault()
         // console.log(newUserData)
         try {
-            const { data } = await axios.post("http://localhost:5000/api/auth/register", newUserData)
+            const { data } = await axios.post("https://promptopia-back.onrender.com/api/auth/register", newUserData)
             // console.log(data);
             saveToLocalStorage("token", data.token);
             navigate("/")
@@ -41,7 +41,7 @@ function SignUp() {
         const formData = new FormData();
         const file = e.target.files[0];
         formData.append("image", file);
-        const { data } = await axios.post("http://localhost:5000/api/upload-image", formData);
+        const { data } = await axios.post("https://promptopia-back.onrender.com/api/upload-image", formData);
         console.log(data)
         setNewUserData({
             ...newUserData,
