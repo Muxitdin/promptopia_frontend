@@ -38,8 +38,8 @@ function SignIn() {
         <div className={s.wrapper}>
             <form onSubmit={handleLoginUser} className='backdrop-blur-sm bg-white/30 border-gray-400'>
                 <h1>Sign In</h1>
-                <input onChange={handleInputChange} name='email' type="email" placeholder='E-mail' />
-                <input onChange={handleInputChange} name='password' type="password" placeholder='Password' />
+                <input onChange={handleInputChange} className='p-[10px]' name='email' type="email" placeholder='E-mail' />
+                <input onChange={handleInputChange} className='p-[10px]' name='password' type="password" placeholder='Password' />
                 <button type='submit' className={s.button}>Sign In</button>
             </form>
             <p>hasn't got an account yet? <NavLink to="/signup">Sign Up</NavLink></p>

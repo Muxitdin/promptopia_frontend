@@ -49,6 +49,7 @@ header {
     border-radius: 50%;
     border: 1px solid #111827;
     margin-top: 4px;
+    object-fit: cover;
 }
 
 /* CSS */

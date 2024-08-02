@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .swal-wide {
     height: 13vh;
     padding: 5px 15px !important;

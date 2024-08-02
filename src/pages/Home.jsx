@@ -10,7 +10,7 @@ import { NavLink } from 'react-router-dom';
 
 function Home() {
     const dispatch = useDispatch();
-    
+
     const prompt = JSON.parse(getFromLocalStorage("singlePrompt"))
 
     useEffect(() => {
@@ -38,7 +38,7 @@ function Home() {
                 </form>
             </div>
 
-            <Feed search={search}/>
+            <Feed search={search} />
 
         </div>
     )
@@ -77,9 +77,27 @@ export function Feed({ search }) {
         return saveToLocalStorage("singlePrompt", JSON.stringify(prompt))
     }
 
-    const handleDelete = (id) => {
-        dispatch(deletePrompt(id));
-        window.location.reload();
+    const handleDelete = async (id) => {
+        try {
+            dispatch(deletePrompt(id));
+            if (getFromLocalStorage("token")) {
+                const fetchPrompts = async () => {
+                    try {
+                        dispatch(fetchAllPromts())
+                    } catch (error) {
+                        console.log(error)
+                    }
+                };
+                fetchPrompts();
+            }
+            Toast.fire({
+                icon: 'success',
+                title: 'Deleted successfully'
+            })
+        } catch (error) {
+            console.log(error)
+        }
+
     }
 
     return (
@@ -93,7 +111,7 @@ export function Feed({ search }) {
                     }).map((prompt) => (
                         <div className={s.prompt} key={prompt._id}>
                             <div className={s.user_info}>
-                                <img src={prompt.author?.image} alt="USER" />
+                                <img className='object-cover' src={prompt.author?.image} alt="USER" />
                                 <div>
                                     <h5>{prompt.author?.fullName}</h5>
                                     <h5>{prompt.author?.email}</h5>
@@ -112,7 +130,7 @@ export function Feed({ search }) {
 
                             {id === prompt.author?._id && (
                                 <div className="mt-5 flex flex-center gap-4 border-t border-gray-200 pt-3">
-                                    <NavLink to="/update-prompt" onClick={() => handleEdit(prompt)}> 
+                                    <NavLink to="/update-prompt" onClick={() => handleEdit(prompt)}>
                                         <p className="font-inter text-sm green_gradient cursor-pointer" id={s.edit}>Edit</p>
                                     </NavLink>
                                     <p onClick={() => handleDelete(prompt?._id)} className="font-inter text-sm orange_gradient cursor-pointer" id={s.delete}>Delete</p>

@@ -10,7 +10,7 @@
     position: relative;
 }
 
-.wrapper > p {
+.wrapper>p {
     font-size: 14px;
     text-align: center;
     font-family: "Roboto", sans-serif;
@@ -21,17 +21,17 @@
 
 }
 
-.wrapper > p > a {
+.wrapper>p>a {
     font-family: "Roboto", sans-serif;
     color: #5c5cbc;
     font-style: normal;
 }
 
-.wrapper > p > a:hover {
+.wrapper>p>a:hover {
     text-decoration: underline;
 }
 
-form {
+.wrapper>form {
     max-width: 300px;
     display: flex;
     flex-direction: column;
@@ -40,17 +40,11 @@ form {
     margin: 20px auto;
 }
 
-form>h1 {
+.wrapper>form>h1 {
     text-align: center;
     font-family: "Roboto", sans-serif;
     font-weight: 900;
     font-style: normal;
-}
-
-input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
 }
 
 .button {
