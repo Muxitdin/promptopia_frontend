@@ -10,20 +10,16 @@ import { NavLink } from 'react-router-dom';
 
 function Home() {
     const dispatch = useDispatch();
-
-    const prompt = JSON.parse(getFromLocalStorage("singlePrompt"))
+    const [singlePrompt, setSinglePrompt] = useState(null);
 
     useEffect(() => {
-        removeFromLocalStorage("singlePrompt")
-        const fetchPrompts = async () => {
-            try {
-                dispatch(fetchAllPromts())
-            } catch (error) {
-                console.log(error)
-            }
-        };
-        fetchPrompts();
-    }, [prompt])
+        const storedPrompt = JSON.parse(getFromLocalStorage("singlePrompt"))
+        if (storedPrompt) {
+            setSinglePrompt(storedPrompt);
+            removeFromLocalStorage("singlePrompt");
+        }
+    }, []);
+
 
     const [search, setSearch] = useState("")
 
@@ -63,6 +59,17 @@ export function Feed({ search }) {
         setId(auth?._id)
     }, [auth])
 
+    useEffect(() => {
+        const fetchPrompts = async () => {
+            try {
+                dispatch(fetchAllPromts())
+            } catch (error) {
+                console.log(error)
+            }
+        };
+        fetchPrompts();
+    }, [dispatch])
+
     const [copied, setCopied] = useState("")
 
     const handleCopy = (content) => {
@@ -79,17 +86,8 @@ export function Feed({ search }) {
 
     const handleDelete = async (id) => {
         try {
-            dispatch(deletePrompt(id));
-            if (getFromLocalStorage("token")) {
-                const fetchPrompts = async () => {
-                    try {
-                        dispatch(fetchAllPromts())
-                    } catch (error) {
-                        console.log(error)
-                    }
-                };
-                fetchPrompts();
-            }
+            await dispatch(deletePrompt(id));
+            dispatch(fetchAllPromts());
             Toast.fire({
                 icon: 'success',
                 title: 'Deleted successfully'

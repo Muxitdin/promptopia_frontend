@@ -58,7 +58,7 @@ function Create() {
                 <p className={s.p1}>Your Prompt</p>
                 <textarea onChange={handleGetInputValue} name="content" placeholder='Write your prompt here...'></textarea>
                 <p className={s.p2}>Tag <span>(#webdevelopment, #idea, #web3)</span></p>
-                <input onChange={handleGetInputValue} name="tag" type="text" placeholder='tag' />
+                <input onChange={handleGetInputValue} className='p-[10px]' name="tag" type="text" placeholder='tag' />
                 <div className={s.btn_wrapper}>
                     <button onClick={handleClickCancel} className={s.cancelbtn}>Cancel</button>
                     <button className={s.createbtn} type='submit' onClick={handleCreateNewPrompt}>Create</button>
