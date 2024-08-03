@@ -40,7 +40,7 @@ function SignUp() {
     const uploadImage = async (e) => {
         const formData = new FormData();
         const file = e.target.files[0];
-        formData.append("image", file);
+        formData.append("file", file);
         const { data } = await axios.post("https://promptopia-back.onrender.com/api/upload-image", formData);
         console.log(data)
         setNewUserData({
