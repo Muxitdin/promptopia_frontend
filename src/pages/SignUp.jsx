@@ -56,9 +56,7 @@ function SignUp() {
                 <input onChange={handleInputChange} className='p-[10px]' name='fullName' type="fullName" placeholder='User Name' />
                 <input onChange={handleInputChange} className='p-[10px]' name='email' type="email" placeholder='E-mail' />
                 <input onChange={handleInputChange} className='p-[10px]' name='password' type="password" placeholder='Password' />
-                <form className='my-0 py-[10px] px-[5px] rounded-[10px]' action="/profile" method="post" enctype="multipart/form-data">
-                    <input onChange={uploadImage} type="file" name="image" id='image' className="block w-full text-sm text-gray-900   cursor-pointe rounded-lg dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" />
-                </form>
+                <input onChange={uploadImage} type="file" name="image" id='image' className="block w-full text-sm text-gray-900   cursor-pointe rounded-lg dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" />
                 <button type='submit' className={s.button}>Sign Up</button>
             </form>
             <p>already has an account? <NavLink to="/signin">Sign In</NavLink></p>
